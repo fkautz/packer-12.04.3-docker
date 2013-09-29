@@ -25,7 +25,13 @@
 			"initrd=/install/initrd.gz -- <enter>"
 		]
 	}],
-	"provisioners": [{
+	"provisioners": [
+    {
+      "type": "file",
+      "source": "docker",
+      "destination": "/tmp/docker"
+    },
+    {
 		"type": "shell",
 		"inline": [
 			"sleep 30",
@@ -36,6 +42,8 @@
 			"apt-get update",
 			"apt-get upgrade -y",
 			"apt-get install -y lxc-docker",
+      "service docker stop",
+      "cp /tmp/docker /usr/bin/docker",
 			"echo \"\" > /etc/udev/rules.d/70-persistent-net.rules"
 		]}]
 }
