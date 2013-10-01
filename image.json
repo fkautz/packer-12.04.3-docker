@@ -2,6 +2,7 @@
 	"builders": [{
 		"vm_name": "docker",
 		"type": "virtualbox",
+		"format": "ova",
 		"guest_os_type": "Ubuntu_64",
 		"iso_url": "http://releases.ubuntu.com/12.04.3/ubuntu-12.04.3-server-amd64.iso",
 		"iso_checksum": "2cbe868812a871242cdcdd8f2fd6feb9",
@@ -44,6 +45,15 @@
 			"apt-get install -y lxc-docker",
       "service docker stop",
       "cp /tmp/docker /usr/bin/docker",
+      "apt-get install -y ruby1.9.1",
+      "apt-get install -y ruby1.9.1-dev",
+      "apt-get install -y sqlite3",
+      "apt-get install -y libsqlite3-dev",
+      "apt-get install -y git",
+      "gem install bundler",
+      "git clone https://github.com/fkautz/airdrop.git",
+      "cd airdrop",
+      "bundle",
 			"echo \"\" > /etc/udev/rules.d/70-persistent-net.rules"
 		]}]
 }
