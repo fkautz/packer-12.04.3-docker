@@ -1,1 +1,4 @@
-packer build image.json
+``` sh
+$ ./build.sh
+$ packer build image.json
+```
