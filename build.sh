@@ -12,7 +12,7 @@ git remote add patches https://github.com/fkautz/docker.git
 git fetch patches
 git checkout v0.6.3
 git cherry-pick patches/v0.6.3-offline-image-transfer
-go install github.com/dotcloud/docker/docker
+CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go install github.com/dotcloud/docker/docker
 popd
 cp $GOPATH/bin/docker .
 
