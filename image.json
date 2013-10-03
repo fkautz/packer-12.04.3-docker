@@ -1,6 +1,7 @@
 {
 	"builders": [{
 		"vm_name": "docker",
+    "format": "ova",
 		"type": "virtualbox",
 		"guest_os_type": "Ubuntu_64",
 		"iso_url": "http://releases.ubuntu.com/12.04.3/ubuntu-12.04.3-server-amd64.iso",
@@ -28,8 +29,8 @@
 	"provisioners": [
     {
       "type": "file",
-      "source": "docker",
-      "destination": "/tmp/docker"
+      "source": "build.sh",
+      "destination": "/tmp/build-docker.sh"
     },
     {
 		"type": "shell",
@@ -42,8 +43,9 @@
 			"apt-get update",
 			"apt-get upgrade -y",
 			"apt-get install -y lxc-docker",
-      "service docker stop",
-      "cp /tmp/docker /usr/bin/docker",
+			"apt-get install -y git",
+			"chmod +x /tmp/build-docker.sh",
+			"/tmp/build-docker.sh",
 			"echo \"\" > /etc/udev/rules.d/70-persistent-net.rules"
 		]}]
 }
