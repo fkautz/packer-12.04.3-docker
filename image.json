@@ -49,7 +49,8 @@
 			"apt-get install -y libsqlite3-dev",
 			"apt-get install -y ruby1.9.1",
 			"apt-get install -y ruby1.9.1-dev",
-      "gem install bundler",
+			"apt-get install -y apt-offline",
+			"gem install bundler",
 			"chmod +x /tmp/build-docker.sh",
 			"/tmp/build-docker.sh",
 			"echo \"\" > /etc/udev/rules.d/70-persistent-net.rules"
